@@ -4,11 +4,17 @@
 
 <script>
 
-  import axios from 'axios';
-  import store from './store.js';
+  import axios from 'axios'
+  import store from './store.js'
+  import AppMovieCard from './components/AppMovieCard.vue'
+  import AppSearch from './components/AppSearch.vue'
 
   export default {
     name: 'App',
+    components: {
+      AppMovieCard,
+      AppSearch
+    },
     data() {
       return {
         store
@@ -34,6 +40,7 @@
         .request(options)
         .then(function (response) {
           //console.log(response.data.results);
+          store.movieList = response.data.results;
         })
         .catch(function (error) {
           //console.error(error);
@@ -53,6 +60,22 @@
 
 <template>
 
+  <!-- start main -->
+
+  <main>
+
+    <!-- start input Search -->
+
+    <AppSearch />
+
+    <!-- start Movie Card -->
+
+    <div class="movie-card-container">
+      <AppMovieCard v-for = "movie in store.movieList" :film = "movie" />
+    </div>  
+  
+  </main>
+
 </template>
 
 <!-- 
@@ -60,5 +83,16 @@
 -->
 
 <style scoped>
+
+  /* start Movie Card Container */
+
+  .movie-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 85%;
+  }
 
 </style>
