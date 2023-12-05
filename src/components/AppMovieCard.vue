@@ -42,7 +42,7 @@
     width: 25%;
     background-color: gainsboro;
     margin: 0.5rem;
-    min-height: 18rem;
+    height: 100%;
     border-radius: 0.5rem;
   }
 
