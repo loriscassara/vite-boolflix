@@ -1,30 +1,64 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
+<!-- 
+  START SCRIPT
+-->
+
+<script>
+
+  import axios from 'axios';
+  import store from './store.js';
+
+  export default {
+    name: 'App',
+    data() {
+      return {
+        store
+      }
+    },
+    methods: {
+      getMovie() {
+        const options = {
+          method: 'GET',
+          url: 'https://api.themoviedb.org/3/search/movie',
+          params: { 
+            query: 'future', 
+            include_adult: 'false', 
+            language: 'en-US', 
+            page: '1' 
+          },
+          headers: {
+            accept: 'application/json',
+            authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZmI2Zjg2ZjUyZWUzMjgxODMxNDcwODIyODFhMTU0MyIsInN1YiI6IjY1NmRmMGEzMDg1OWI0MDBhZDM5ZjhjZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xe2Vb9urprdUXsWvCYsJcD5yKZmcaCCZ5LUIhgb5qyc'
+          }
+        };
+        axios
+        .request(options)
+        .then(function (response) {
+          //console.log(response.data.results);
+        })
+        .catch(function (error) {
+          //console.error(error);
+        });
+      }
+    },
+    mounted() {
+      this.getMovie()
+    }
+  }
+
 </script>
 
+<!-- 
+  START TEMPLATE
+-->
+
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+
 </template>
 
+<!-- 
+  START STYLE
+-->
+
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+
 </style>
