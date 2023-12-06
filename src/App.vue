@@ -5,7 +5,7 @@
 <script>
 
   import axios from 'axios'
-  import store from './store.js'
+  import { store } from './store.js'
   import AppMovieCard from './components/AppMovieCard.vue'
   import AppSearch from './components/AppSearch.vue'
   import AppSeries from './components/AppSeries.vue'
@@ -160,14 +160,11 @@
   /* start Movie Card Container */
 
   .movie-card-container {
+    width: 80%;
+    margin: 2rem auto;
     display: flex;
-    overflow-y: auto;
-    scroll-behavior: smooth;
-    align-items: center;
-    justify-content: space-between;
-    margin: 2.5rem auto;
-    width: 85%;
-    height: 40vh;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
   }
 
 </style>

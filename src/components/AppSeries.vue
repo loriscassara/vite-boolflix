@@ -38,11 +38,10 @@
 
   /* start CardS Container */
   .cardS {
-    background-color: gainsboro;
+    width: 23%;
     margin: 0.5rem;
+    background-color: rgb(128, 126, 126);
     border-radius: 0.5rem;
-    width: 25%;
-    height: 100%;
   }
 
 </style>

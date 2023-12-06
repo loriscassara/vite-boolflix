@@ -39,10 +39,9 @@
   /* start Card */
 
   .card-container {
-    width: 25%;
-    background-color: gainsboro;
+    width: 23%;
     margin: 0.5rem;
-    height: 100%;
+    background-color: rgb(128, 126, 126);
     border-radius: 0.5rem;
   }
 
