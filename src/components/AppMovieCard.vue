@@ -4,10 +4,13 @@
 
 <script>
 
+  import { store } from '../store.js'
+
   export default {
     name: 'AppMovieCard',
     data() {
       return {
+        store,
         active: true
       }
     },
@@ -31,17 +34,19 @@
     <!-- start Card-top -->
 
     <div class="card-top">
-      <img class="wallpaper" :src="`http://image.tmdb.org/t/p/w500${film.poster_path}`" alt="wallpaper image">
+      <img class="wallpaper" v-if="film.poster_path" :src="`http://image.tmdb.org/t/p/w500${film.poster_path}`" alt="wallpaper image">
+      <img class="wallpaper" v-else src="../../public/image/image-not-available.jpg" alt="wallpaper image">
     </div>
 
     <!-- start Card-bottom -->
 
     <div class="card-bottom" v-if="!active">
       <h1>{{ film.title }}</h1>
-      <h5>{{ film.original_language }}</h5>
+      <h5>Lingua:</h5><span v-if="!this.store.lingue.includes(film.original_language)">{{ film.original_language }}</span>
       <img class="flag" :src="`../../public/image/${film.original_language}.svg`" alt="language">
-      <h3>{{ film.original_title }}</h3>
-      <p>{{ film.vote_average }}</p>
+      <h3>Titolo:</h3><span>{{ film.original_title }}</span>
+      <h3>Votazione:</h3><span>{{ film.vote_average }}</span>
+      <h3>View:</h3><span>{{ film.overview }}</span>
     </div>
   </div>
 
@@ -78,6 +83,15 @@
     border-radius: 0.5rem;
     width: 100%;
     height: 100%;
+    overflow: auto;
+    padding: 0.5rem;
+  }
+
+  /* start Flag */
+
+  .flag {
+    width: 10%;
+    margin: 0.5rem;
   }
 
   /* start Wallpaper */
@@ -98,6 +112,7 @@
 
   h1 {
     padding-bottom: 0.5rem;
+    text-align: center;
   }
 
 </style>

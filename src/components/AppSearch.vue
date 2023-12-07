@@ -29,14 +29,12 @@
 
 <template>
 
-  <!-- start input Search -->
+  <!-- start Header -->
 
-  <input type="text" placeholder="Cerca.." v-model = "store.searchInput" @keyup = "getInput">
-  <select name="language" id="language" v-model = "store.currentLanguage">
-    <option value="all">All</option>
-    <option value="en">English</option>
-    <option value="it">Italian</option>
-  </select>
+  <header>
+    <img id="logo" src="../../public/image/netflix-mobile-application-logo-free-png.webp" alt="logo">
+    <input type="text" placeholder="Cerca.." v-model="store.searchInput" @keyup="getInput">
+  </header>
 
 </template>
 
@@ -46,6 +44,21 @@
 
 <style scoped>
 
-  
+  /* start Header */
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    background-color: black;
+  }
+
+  /* start logo */
+
+  #logo {
+    height: 4rem;
+    margin: 0.5rem;
+  }
 
 </style>

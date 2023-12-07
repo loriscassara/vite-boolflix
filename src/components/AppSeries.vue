@@ -4,8 +4,15 @@
 
 <script>
 
+  import { store } from '../store.js'
+
   export default {
     name: 'AppSeries',
+    data() {
+      return {
+        store
+      }
+    },
     props: {
       serie: ''
     }
@@ -26,17 +33,19 @@
     <!-- start Card-top -->
 
     <div class="card-top">
-      <img class="wallpaper" :src="`http://image.tmdb.org/t/p/w500${serie.poster_path}`" alt="wallpaper image">
+      <img class="wallpaper" v-if="serie.poster_path" :src="`http://image.tmdb.org/t/p/w500${serie.poster_path}`" alt="wallpaper image">
+      <img class="wallpaper" v-else src="../../public/image/image-not-available.jpg" alt="wallpaper image">
     </div>
 
     <!-- start Card-bottom -->
     
     <div class="card-bottom">
       <h1>{{ serie.name }}</h1>
-      <h5>{{ serie.original_language }}</h5>
+      <h5>Lingua:</h5><span v-if="!this.store.lingue.includes(serie.original_language)">{{ serie.original_language }}</span>
       <img class="flag" :src="`../../public/image/${serie.original_language}.svg`" alt="image language">
-      <h3>{{ serie.original_name }}</h3>
-      <p>{{ serie.popularity }}</p>
+      <h3>Titolo:</h3><span>{{ serie.original_name }}</span>
+      <h3>Votazione:</h3><span>{{ serie.popularity }}</span>
+      <h3>View:</h3><span>{{ serie.overview }}</span>
     </div>
   </div>
 
@@ -72,6 +81,8 @@
     width: 100%;
     height: 100%;
     opacity: 0;
+    overflow: auto;
+    padding: 0.5rem;
     transition: all .55s ease;
   }
 
@@ -102,6 +113,7 @@
 
   h1 {
     padding-bottom: 0.5rem;
+    text-align: center;
   }
 
 </style>
