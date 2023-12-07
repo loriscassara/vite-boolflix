@@ -36,7 +36,6 @@
     <option value="all">All</option>
     <option value="en">English</option>
     <option value="it">Italian</option>
-    <option value="sp">Spanish</option>
   </select>
 
 </template>
