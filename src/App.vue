@@ -141,12 +141,14 @@
     <!-- start input Search -->
 
     <AppSearch @searchFilm = "getMovie" />
+    <h2>Results Movies:</h2>
 
     <!-- start Movie Card -->
 
     <div class="movie-card-container">
       <AppMovieCard v-for = "movie in store.movieList" :film = "movie" />
     </div>
+    <h2>Results Series:</h2>
     <div class="movie-card-container">
       <AppSeries v-for = "series in store.seriesList" :serie = "series" />
     </div>
@@ -165,11 +167,12 @@
 
   .movie-card-container {
     width: 80%;
-    height: 60vh;
+    height: 50vh;
     margin: 2rem auto;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
+    align-items: center;
     overflow: auto;
   }
 
